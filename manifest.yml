@@ -8,3 +8,4 @@ applications:
   disk_quota: 1024M
   services:
   - WorkshopDemo1-personality_insights
+  - ToneAnalyzerWorkshop

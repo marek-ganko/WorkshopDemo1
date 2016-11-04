@@ -16,11 +16,11 @@
 
 'use strict';
 
-var express    = require('express'),
-  app          = express(),
-  watson       = require('watson-developer-cloud'),
-  extend       = require('util')._extend,
-  i18n         = require('i18next');
+var express = require('express'),
+  app = express(),
+  watson = require('watson-developer-cloud'),
+  extend = require('util')._extend,
+  i18n = require('i18next');
 
 //i18n settings
 require('./config/i18n')(app);
@@ -35,12 +35,22 @@ var personalityInsights = watson.personality_insights({
   password: '<password>'
 });
 
+var toneAnalyzer = watson.tone_analyzer({
+  password: 'wduSglgnMGpQ',
+  username: 'd3814339-e5b9-494d-ba03-f65d3ac0d544',
+  version: 'v3'
+});
+
 app.get('/', function(req, res) {
-  res.render('index', { ct: req._csrfToken });
+  res.render('index', {
+    ct: req._csrfToken
+  });
 });
 
 app.post('/api/profile', function(req, res, next) {
-  var parameters = extend(req.body, { acceptLanguage : i18n.lng() });
+  var parameters = extend(req.body, {
+    acceptLanguage: i18n.lng()
+  });
 
   personalityInsights.profile(parameters, function(err, profile) {
     if (err)
