@@ -41,6 +41,16 @@ var toneAnalyzer = watson.tone_analyzer({
   version: 'v3'
 });
 
+toneAnalyzer.tone({
+    text: 'Greetings from Watson Developer Cloud!'
+  },
+  function(err, tone) {
+    if (err)
+      console.log(err);
+    else
+      console.log(JSON.stringify(tone, null, 2));
+  });
+
 app.get('/', function(req, res) {
   res.render('index', {
     ct: req._csrfToken
