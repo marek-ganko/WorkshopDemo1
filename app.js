@@ -38,7 +38,8 @@ var personalityInsights = watson.personality_insights({
 var toneAnalyzer = watson.tone_analyzer({
   password: 'wduSglgnMGpQ',
   username: 'd3814339-e5b9-494d-ba03-f65d3ac0d544',
-  version: 'v3'
+  version: 'v3',
+  version_date: '2016-05-19'
 });
 
 toneAnalyzer.tone({
